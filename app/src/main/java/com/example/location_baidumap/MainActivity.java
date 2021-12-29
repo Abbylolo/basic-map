@@ -1,6 +1,5 @@
 package com.example.location_baidumap;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.RadioButton;
@@ -11,6 +10,10 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapView;
 
+/**
+ * @author Abby
+ * @version V1.0
+ **/
 public class MainActivity extends Activity {
     MapView mMapView = null;
     BaiduMap mBaiduMap = null;
@@ -29,7 +32,7 @@ public class MainActivity extends Activity {
         //法一：通过layout文件中添加MapView控件来展示地图
         setContentView(R.layout.activity_main);
         //获取地图控件引用
-        mMapView = (MapView)findViewById(R.id.bMapView);
+        mMapView = findViewById(R.id.bMapView);
 
         /* 法二：直接在Java代码中添加MapView的方式来展示地图
         mMapView = new MapView(this);
@@ -38,9 +41,7 @@ public class MainActivity extends Activity {
 
         //一、切换地图类型
         //① MAP_TYPE_NORMAL  普通地图（包含3D地图）   ② MAP_TYPE_SATELLITE  卫星图    ③ MAP_TYPE_NONE  空白地图
-        mBaiduMap = mMapView.getMap();
-        mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
-        //在改变状态时触发即为单选按钮组设置监听
+        //在导航栏的单选按钮改变状态时触发事件（即为单选按钮组设置监听）
         mapTypeGroup = (RadioGroup) findViewById(R.id.map_type_group);
         mapTypeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
             @Override
@@ -54,6 +55,10 @@ public class MainActivity extends Activity {
         });
     }
 
+    /**
+     *
+     * @param type
+     */
     protected void setMapType(String type){
         mBaiduMap = mMapView.getMap();
         switch (type) {
