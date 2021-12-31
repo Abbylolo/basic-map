@@ -3,18 +3,27 @@
     android:id="@+id/layout_titlebar"
     android:layout_width="match_parent"
     android:layout_height="52dp"
-    android:background="@color/title_bar" >
+    android:background="@color/title_bar"
+    android:alpha="20">
+
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/icon_settings"
+        android:layout_centerVertical="true"/>
 
     <TextView
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/settings_button"
         android:ellipsize="marquee"
         android:gravity="center_horizontal|center"
         android:singleLine="true"
         android:text="地图类型: "
         android:textColor="@color/title_color"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
     <RadioGroup
         android:id="@+id/map_type_group"
@@ -43,5 +52,7 @@
             android:textColor="@color/title_color"
             android:text="空白地图" />
     </RadioGroup>
+
+
 
 </RelativeLayout>

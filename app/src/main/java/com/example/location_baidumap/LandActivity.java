@@ -12,7 +12,8 @@ public class LandActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.land); // 显示着陆页
+        setContentView(R.layout.activity_land); // 显示着陆页
+        getSupportActionBar().hide(); //隐藏标题栏
         new Handler().postDelayed(new splashHandle(),DELAY_TIME); // 1s后进行页面切换
     }
 
