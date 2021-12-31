@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
         initSettings(); //初始化上次的设置
         settings(); //和设置页面交互
         changeMapType(); //功能一：切换地图类型
-        showLocation(); //功能二：显示定位
+        showLocation(); //功能二：显示定位+用户设置定位模式
     }
 
     /**
