@@ -6,6 +6,8 @@
 
     <include layout="@layout/layout_titlebar" />
 
+    <include layout="@layout/layout_poisearch"/>
+
     <com.example.location_baidumap.RunTextView
         android:layout_width="match_parent"
         android:layout_height="35dp"

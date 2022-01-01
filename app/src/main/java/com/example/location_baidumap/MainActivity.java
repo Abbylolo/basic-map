@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
@@ -37,11 +38,13 @@ import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.overlayutil.PoiOverlay;
+import com.baidu.mapapi.search.core.PoiDetailInfo;
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.baidu.mapapi.search.core.SearchResult;
 import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
 import com.baidu.mapapi.search.poi.PoiCitySearchOption;
 import com.baidu.mapapi.search.poi.PoiDetailResult;
+import com.baidu.mapapi.search.poi.PoiDetailSearchOption;
 import com.baidu.mapapi.search.poi.PoiDetailSearchResult;
 import com.baidu.mapapi.search.poi.PoiIndoorResult;
 import com.baidu.mapapi.search.poi.PoiResult;
@@ -66,7 +69,8 @@ public class MainActivity extends Activity {
     private SharedPreferences sharedPreferences;
     private PoiSearch mPoiSearch;
     private Switch markSwitch;
-    BaiduMap.OnMarkerClickListener onMarkerClickListener;
+    private BaiduMap.OnMarkerClickListener onMarkerClickListener;
+    private String cityName, keyWord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +80,7 @@ public class MainActivity extends Activity {
         settings(); //和设置页面交互
         changeMapType(); //功能一：切换地图类型
         showLocation(); //功能二：显示定位+用户设置定位模式
-        poiSearch(); //功能三：POI周边检索
+        getPoiSearch(); //功能三：POI周边检索
         markLoc(); //功能四：标记位置并显示经纬度
     }
 
@@ -262,9 +266,34 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * 功能三：POI周边检索
+     * 功能三：获取POI城市检索
      */
-    protected void poiSearch(){
+    protected void getPoiSearch(){
+        Button poiSearchButton = findViewById(R.id.search_button);
+        EditText cityNameET = findViewById(R.id.city_name);
+        EditText keyWordet = findViewById(R.id.key_word);
+        poiSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cityName = cityNameET.getText().toString();
+                keyWord = keyWordet.getText().toString();
+                if(!cityName.equals("") && !keyWord.equals("")) {
+                    poiSearch(cityName,keyWord);
+                } else if(cityName.equals("")){
+                    Toast.makeText(getApplicationContext(),"请输入城市名",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(),"请输入关键词",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    /**
+     * Poi城市检索
+     * @param cityName 城市名
+     * @param keyWord 关键词
+     */
+    protected void poiSearch(String cityName,String keyWord){
         //1、创建POI检索实例
         mPoiSearch = PoiSearch.newInstance();
         //2、创建POI检索监听器
@@ -279,15 +308,16 @@ public class MainActivity extends Activity {
                     PoiOverlay poiOverlay = new PoiOverlay(mBaiduMap);
                     //设置Poi检索数据
                     poiOverlay.setData(poiResult);
-
-                    List<PoiInfo> allAddr = poiResult.getAllPoi();
-                    for (PoiInfo p: allAddr) {
-                        Log.d("MainActivity", "p.name--->" + p.name +"p.phoneNum" + p.phoneNum +" -->p.address:" + p.address + "p.location" + p.location);
-                    }
-
                     //将poiOverlay添加至地图并缩放至合适级别
                     poiOverlay.addToMap();
                     poiOverlay.zoomToSpan();
+
+                    //获取poi列表
+                    List<PoiInfo> allAddr = poiResult.getAllPoi();
+                    for (PoiInfo p: allAddr) {
+                        mPoiSearch.searchPoiDetail((new PoiDetailSearchOption()).poiUids(p.uid));
+                        Log.d("MainActivity", "p.name--->" + p.name +"p.phoneNum" + p.phoneNum +" -->p.address:" + p.address + "p.location" + p.location);
+                    }
 
                 } else {
                     Log.d("poi","hh");
@@ -295,10 +325,17 @@ public class MainActivity extends Activity {
             }
             //获取Place详情页检索结果
             @Override
-            public void onGetPoiDetailResult(PoiDetailResult poiDetailResult) {
-            }
-            @Override
             public void onGetPoiDetailResult(PoiDetailSearchResult poiDetailSearchResult) {
+                if (poiDetailSearchResult.error != SearchResult.ERRORNO.NO_ERROR) {
+                    //详情检索失败
+                }
+                else {
+                    //检索成功
+                }
+            }
+            //获取Place详情页检索结果（已废弃）
+            @Override
+            public void onGetPoiDetailResult(PoiDetailResult poiDetailResult) {
             }
             @Override
             public void onGetPoiIndoorResult(PoiIndoorResult poiIndoorResult) {
@@ -307,16 +344,11 @@ public class MainActivity extends Activity {
         //3、设置检索监听器
         mPoiSearch.setOnGetPoiSearchResultListener(listener);
         //4、设置PoiCitySearchOption，发起检索请求
-        /**
-         *  PoiCiySearchOption 设置检索属性
-         *  city 检索城市
-         *  keyword 检索内容关键字
-         *  pageNum 分页页码
-         */
+        //PoiCiySearchOption 设置检索属性
         mPoiSearch.searchInCity(new PoiCitySearchOption()
-                .city("杭州") //必填
-                .keyword("美食") //必填
-                .pageNum(10));
+                .city(cityName) //检索城市
+                .keyword(keyWord) //检索内容关键字
+                .pageNum(0)); //分页页码
         //5、释放检索实例
         mPoiSearch.destroy();
     }
@@ -358,7 +390,7 @@ public class MainActivity extends Activity {
                     mBaiduMap.setOnMarkerClickListener(onMarkerClickListener);
                 } else {
                     mBaiduMap.removeMarkerClickListener(onMarkerClickListener);
-                    //mBaiduMap.clear();
+                    mBaiduMap.clear();
                 }
             }
         });

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_poisearch"
+    android:layout_width="match_parent"
+    android:background="@color/grey"
+    android:layout_height="45dp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:text="城市名:"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/city_name"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/textView"
+        android:imeOptions="actionSearch"
+        android:textSize="14dp"
+        android:hint="例:杭州"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/city_name"
+        android:layout_marginStart="15dp"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:text="关键词:"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/key_word"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/textView2"
+        android:imeOptions="actionSearch"
+        android:hint="例:美食"
+        android:textSize="14dp"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/key_word"
+        android:layout_marginStart="5dp"
+        android:layout_gravity="center"
+        android:textSize="16dp"
+        android:text="搜索" />
+</RelativeLayout>

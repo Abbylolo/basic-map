@@ -17,20 +17,20 @@
         android:id="@+id/text_title"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_toRightOf="@+id/settings_button"
+        android:layout_toEndOf="@+id/settings_button"
         android:ellipsize="marquee"
         android:gravity="center_horizontal|center"
         android:singleLine="true"
         android:text="地图类型: "
         android:textColor="@color/title_color"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
     <RadioGroup
         android:id="@+id/map_type_group"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginLeft="-31dp"
-        android:layout_toRightOf="@+id/text_title"
+        android:layout_marginStart="-31dp"
+        android:layout_toEndOf="@+id/text_title"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
