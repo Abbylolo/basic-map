@@ -6,8 +6,6 @@
 
     <include layout="@layout/layout_titlebar" />
 
-
-
     <com.example.location_baidumap.RunTextView
         android:layout_width="match_parent"
         android:layout_height="35dp"
@@ -24,5 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="true" />
+
 
 </LinearLayout>

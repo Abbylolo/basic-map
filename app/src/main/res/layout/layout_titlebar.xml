@@ -27,32 +27,42 @@
 
     <RadioGroup
         android:id="@+id/map_type_group"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginLeft="-31dp"
         android:layout_toRightOf="@+id/text_title"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <RadioButton
             android:id="@+id/normal"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:checked="true"
-            android:textColor="@color/title_color"
-            android:text="普通图" />
+            android:text="普通图"
+            android:textColor="@color/title_color" />
+
         <RadioButton
             android:id="@+id/satellite"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:textColor="@color/title_color"
-            android:text="卫星图" />
+            android:layout_height="wrap_content"
+            android:text="卫星图"
+            android:textColor="@color/title_color" />
+
         <RadioButton
             android:id="@+id/none"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:textColor="@color/title_color"
-            android:text="空白地图" />
+            android:layout_height="wrap_content"
+            android:text="空白地图"
+            android:textColor="@color/title_color" />
     </RadioGroup>
 
+    <Switch
+        android:id="@+id/mark_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/map_type_group"
+        android:text="Mark" />
 
 
 </RelativeLayout>
