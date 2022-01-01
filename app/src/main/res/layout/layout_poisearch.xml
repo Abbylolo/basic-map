@@ -3,14 +3,14 @@
     android:id="@+id/layout_poisearch"
     android:layout_width="match_parent"
     android:background="@color/grey"
-    android:layout_height="45dp">
+    android:layout_height="40dp">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:text="城市名:"
         android:textColor="@color/white" />
 
@@ -21,8 +21,10 @@
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@+id/textView"
         android:imeOptions="actionSearch"
-        android:textSize="14dp"
+        android:textSize="14sp"
+        android:textColorHint="@color/hint"
         android:hint="例:杭州"
+        android:gravity="center"
         android:textColor="@color/white" />
 
     <TextView
@@ -31,7 +33,7 @@
         android:layout_height="match_parent"
         android:layout_toEndOf="@+id/city_name"
         android:layout_marginStart="15dp"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:gravity="center"
         android:text="关键词:"
         android:textColor="@color/white" />
@@ -42,18 +44,20 @@
         android:layout_height="match_parent"
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@+id/textView2"
+        android:gravity="center"
         android:imeOptions="actionSearch"
         android:hint="例:美食"
-        android:textSize="14dp"
-        android:textColor="@color/white" />
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/hint"/>
 
     <Button
         android:id="@+id/search_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="38dp"
         android:layout_toEndOf="@id/key_word"
         android:layout_marginStart="5dp"
         android:layout_gravity="center"
-        android:textSize="16dp"
+        android:textSize="15sp"
         android:text="搜索" />
 </RelativeLayout>

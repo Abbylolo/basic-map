@@ -124,10 +124,13 @@ public class MainActivity extends Activity {
         if(!f.exists()) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("locMode","普通态");
+            editor.putString("mapType","普通态");
             editor.apply();
         }
         //获取初始/上次设置的定位模式
         locationMode = sharedPreferences.getString("locMode","普通态");
+        //获取始/上次设置的地图类型
+        mapType = sharedPreferences.getString("mapType","普通态");
 
     }
 
@@ -151,17 +154,7 @@ public class MainActivity extends Activity {
     protected  void changeMapType(){
         //① MAP_TYPE_NORMAL  普通地图（包含3D地图）   ② MAP_TYPE_SATELLITE  卫星图    ③ MAP_TYPE_NONE  空白地图
         //在导航栏的单选按钮改变状态时触发事件（即为单选按钮组设置监听）
-        mapTypeGroup = (RadioGroup) findViewById(R.id.map_type_group);
-        mapTypeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup,int checkedId){
-                //根据checkedId获取到单选按钮组里面的具体单选按钮
-                RadioButton radioButton = (RadioButton)findViewById(checkedId);
-                //获取选中的单选按钮的值
-                mapType = radioButton.getText().toString();
-                setMapType(mapType);
-            }
-        });
+        setMapType(mapType);
     }
 
     /**

@@ -6,15 +6,17 @@
     <color name="teal_200">#F2B7FD</color>
     <color name="teal_700">#C989D8</color>
     <color name="black">#FF000000</color>
-    <color name="grey">#656262</color>
+    <color name="grey">#393838</color>
+    <color name="hint">#aaaaaa</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="title_bar">#FA454141</color>
+    <color name="title_bar">#FA292828</color>
     <color name="title_color">#FFFFFF</color>
     <color name="yellow_loc">#AAFFFF88</color>
     <color name="red_loc">#70FA4911</color>
     <color name="green_loc">#A18BC34A</color>
     <color name="pink_100">#AAF8EBFD</color>
     <color name="pink_200">#AAE2B4F4</color>
+    <color name="pink_300">#FAFBBFFA</color>
     <color name="green_100">#E7FFCC</color>
     <color name="green_200">#76D804</color>
 </resources>
