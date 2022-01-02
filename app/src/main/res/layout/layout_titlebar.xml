@@ -21,7 +21,7 @@
         android:layout_alignParentEnd="true"
         android:gravity="center"
         android:layout_marginRight="5dp"
-        android:text="MARK"
+        android:text="MARKER"
         android:fontFamily="@font/baloo_bhai"
         android:textColor="@color/white" />
 

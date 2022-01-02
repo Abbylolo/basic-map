@@ -1,4 +1,58 @@
 <resources>
     <string name="app_name">BaiduMap</string>
     <string name="slogan">疫情期间 外出时请佩戴好口罩 保护您与家人的生命安全！Please wear a mask when you go out during the epidemic to protect your life and your family!</string>
+    <string-array name="mid_area">
+        <item>浙江省宁波市北仑区新碶街道沿海村</item>
+        <item>宁波市北仑区新碶街道申洲公司三部厂区及宿舍区</item>
+        <item>河南省洛阳市新安县正村镇正村社区</item>
+        <item>河南省洛阳市新安县正村镇西沟村</item>
+        <item>云南省昆明市呈贡区雨花街道营盘社区蓝光天娇城小区</item>
+        <item>广西壮族自治区防城港市东兴市江平镇江龙村周屋组</item>
+        <item>广东省东莞市大朗镇长塘社区长塘花街二街(133号、143号、163号)</item>
+        <item>陕西省西安市雁塔区大雁塔街道</item>
+        <item>陕西省西安市碑林区柏树林街道</item>
+        <item>陕西省西安市灞桥区灞桥街道</item>
+        <item>陕西省西安市新城区韩森寨街道</item>
+        <item>陕西省西安市莲湖区北关街道</item>
+    </string-array>
+    <string-array name="high_area">
+        <item>广西省防城港东兴市江平镇万尾村</item>
+        <item>西安省雁塔区小寨路街道长安中路33号长安大学校本部住宅区和北苑宿舍区</item>
+    </string-array>
+    <string-array name="mid_lat">
+        <item>29.928202</item>
+        <item>29.91547</item>
+        <item>34.815735</item>
+        <item>34.822491</item>
+        <item>24.823816</item>
+        <item>21.579882</item>
+        <item>22.933985</item>
+        <item>34.225632</item>
+        <item>34.254971</item>
+        <item>34.31229</item>
+        <item>34.2514</item>
+        <item>34.282421</item>
+    </string-array>
+    <string-array name="mid_lng">
+        <item>121.814491</item>
+        <item>121.80555 </item>
+        <item>112.17131</item>
+        <item>112.16246 </item>
+        <item>102.820564</item>
+        <item>108.132019</item>
+        <item>113.932854</item>
+        <item>108.965904</item>
+        <item>108.965492</item>
+        <item>109.081299</item>
+        <item>109.022293</item>
+        <item>108.948311</item>
+    </string-array>
+    <string-array name="high_lat">
+        <item>21.529932</item>
+        <item>34.225052</item>
+    </string-array>
+    <string-array name="high_lng">
+        <item>108.164452</item>
+        <item>108.948219</item>
+    </string-array>
 </resources>

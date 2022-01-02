@@ -27,6 +27,7 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.ItemizedOverlay;
 import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
@@ -51,6 +52,7 @@ import com.baidu.mapapi.search.poi.PoiResult;
 import com.baidu.mapapi.search.poi.PoiSearch;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -82,6 +84,7 @@ public class MainActivity extends Activity {
         showLocation(); //功能二：显示定位+用户设置定位模式
         getPoiSearch(); //功能三：POI周边检索
         markLoc(); //功能四：标记位置并显示经纬度
+        showCOVIDArea(); //功能五：疫情中高风险区域展示
     }
 
     /**
@@ -382,11 +385,42 @@ public class MainActivity extends Activity {
                     };
                     mBaiduMap.setOnMarkerClickListener(onMarkerClickListener);
                 } else {
-                    mBaiduMap.removeMarkerClickListener(onMarkerClickListener);
                     mBaiduMap.clear();
                 }
             }
         });
+    }
+
+    /**
+     * 功能五：COVID AREA中高风险疫情区域标记
+     */
+    protected void showCOVIDArea(){
+        //获取经纬度数组
+        //中风险
+        String[] midLat = getResources().getStringArray(R.array.mid_lat);
+        String[] midLng = getResources().getStringArray(R.array.mid_lng);
+        //高风险
+        String[] highLat = getResources().getStringArray(R.array.high_lat);
+        String[] highLng = getResources().getStringArray(R.array.high_lng);
+
+        //设置覆盖物图标
+        BitmapDescriptor midDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.icon_loc_yellow); //中风险黄图标
+        BitmapDescriptor highDescriptor = BitmapDescriptorFactory.fromResource(R.drawable.icon_loc_red); //高风险红图标
+
+        //绘制图标
+        setLatLng(midDescriptor,midLat,midLng); //中风险
+        setLatLng(highDescriptor,highLat,highLng); //高风险
+
+
+    }
+
+    protected void setLatLng(BitmapDescriptor descriptor,String[] lat,String[] lng){
+        for(int i = 0; i<lat.length; i++){
+            LatLng latLng = new LatLng(Double.parseDouble(lat[i]),Double.parseDouble(lng[i]));
+            OverlayOptions options = new MarkerOptions().position(latLng).icon(descriptor);
+            //在地图上添加覆盖物
+            mBaiduMap.addOverlay(options);
+        }
     }
 
     @Override
