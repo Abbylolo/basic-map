@@ -10,6 +10,17 @@ Android地图开发，使用百度地图SDK
 
 采用的技术有：通过 Hundler 实现异步效果、通过显式 Intent 以指定类名的方式启动组件、使用 SharedPreference 进行数据存储、采用 2D 绘图对Textview 边框进行绘制、使用 Toast 消息提示。
 
+Android map development, using Baidu map SDK
+
+Function one realizes map switching\
+Function 2 Display location + custom location mode\
+Function Three POI retrieves and marks the location in the graph\
+Function 4 Users can set marks on the map and click toast to display longitude and latitude\
+Function 5 High-risk COVID-19 AREA markers\
+Additional running banner landing page
+
+The technologies adopted include Hundler to realize asynchronous effects, explicit Intent to start components by specifying class names, SharedPreference to store data, 2D drawing to draw Textview border, and Toast message prompt.
+
 ![image](https://user-images.githubusercontent.com/56860678/158933472-5291d770-16ff-4886-a11e-e3a35a95fe46.png)
 ![image](https://user-images.githubusercontent.com/56860678/158933488-bba54dd0-d8d2-41a2-85b9-8e25cdb20f6d.png)
 ![image](https://user-images.githubusercontent.com/56860678/158933137-fbfea6ae-23b9-4fe0-b397-12f3ec6bc01b.png)
