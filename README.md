@@ -12,9 +12,9 @@ Android地图开发，使用百度地图SDK
 
 Android map development, using Baidu map SDK
 
-Function one realizes map switching\
+Function 1 realizes map switching\
 Function 2 Display location + custom location mode\
-Function Three POI retrieves and marks the location in the graph\
+Function 3 POI retrieves and marks the location in the graph\
 Function 4 Users can set marks on the map and click toast to display longitude and latitude\
 Function 5 High-risk COVID-19 AREA markers\
 Additional running banner landing page
